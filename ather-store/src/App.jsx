@@ -55,7 +55,15 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const phoneNumber = "21656600566"; // Ton nouveau numéro WhatsApp
+
+    // 1. Contrôle : Vérifier que le numéro comporte exactement 8 chiffres et pas de lettres
+    const phoneRegex = /^[0-9]{8}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert("الرجاء إدخال رقم هاتف صحيح يتكون من 8 أرقام בדיוק (بدون حروف أو رموز).");
+      return; // Bloque l'envoi si le format est incorrect
+    }
+
+    const phoneNumber = "21656600566"; // Numéro WhatsApp
     
     const message = `🛍️ *طلب جديد من موقع أثر (Ather)*\n\n` +
                     `📦 *المنتج:* ${product.name}\n` +
@@ -193,7 +201,16 @@ export default function App() {
 
         <div className="form-group">
           <label>الهاتف</label>
-          <input type="tel" name="phone" required placeholder="أدخل رقم هاتفك" value={formData.phone} onChange={handleChange} className="text-input" />
+          <input 
+            type="tel" 
+            name="phone" 
+            required 
+            maxLength="8" 
+            placeholder="أدخل رقم هاتفك (8 أرقام)" 
+            value={formData.phone} 
+            onChange={handleChange} 
+            className="text-input" 
+          />
         </div>
 
         <div className="form-group">
