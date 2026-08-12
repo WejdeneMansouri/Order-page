@@ -63,7 +63,7 @@ export default function App() {
       return; // Bloque l'envoi si le format est incorrect
     }
 
-    const phoneNumber = "21656600566"; // Numéro WhatsApp
+    const phoneNumber = "21655553905"; // Numéro WhatsApp
     
     const message = `🛍️ *طلب جديد من موقع أثر (Ather)*\n\n` +
                     `📦 *المنتج:* ${product.name}\n` +
